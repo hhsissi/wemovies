@@ -1,0 +1,31 @@
+<div class="card d-flex flex-row mb-3 p-0 border-0">
+    <picture>
+        <source srcset="{{ imgConfig.secureBaseUrl }}/{{ imgConfig.posterSizes ? imgConfig.posterSizes[4] : '' }}{{ movie.posterPath }}" media="(max-width: 752px)" alt="{{ movie.title }}">
+        <img class="card__img" src="{{ imgConfig.secureBaseUrl }}/{{ imgConfig.posterSizes ? imgConfig.posterSizes[3] : '' }}{{ movie.posterPath }}" alt="{{ movie.title }}" />
+    </picture>
+    <div class="card-body">
+        <div class="card-title d-flex flex-row align-items-baseline gap-2 flex-wrap">
+            <h5>{{ movie.title }}</h5>
+            <span style="flex: 1 1 auto"></span>
+            <div>
+            {% for i in 1..5 %}
+                {% if movie.voteAverage | round / 2 >= i %}
+                    <span class="fa fa-star checked"></span>
+                {% else %}
+                    <span class="fa fa-star"></span>
+                {% endif %}
+            {% endfor %}
+            <span>({{ movie.voteCount }} votes)</span>
+            </div>
+        </div>
+        <div class="card-subtitle">
+            {{ movie.releaseDate | date ('m/Y') }}
+        </div>
+        <p class="card-text">{{ movie.overview }}</p>
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-primary modalControl" data-movie="{{ movie.id }}" data-bs-toggle="modal" data-bs-target="#movieModal">
+                Show more
+            </button>
+        </div>
+    </div>
+</div>

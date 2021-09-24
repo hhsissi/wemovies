@@ -1,0 +1,97 @@
+@import "~bootstrap/scss/bootstrap";
+
+body {
+    background-color: #fafafa;
+
+    .container {
+        min-width: 260px;
+    }
+
+    .genres-list {
+        list-style: none;
+
+        &__item {
+            &__link {
+                color: black;
+                text-decoration: none;
+
+                &:active, &:hover {
+                    color: #147dc2;
+                    font-weight: 900;
+                }
+            }
+        }
+    }
+
+    .card {
+        height: auto;
+        &__img {
+            max-width: 200px;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .card-text {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-height: 100px;
+        }
+    }
+
+    .fa {
+        &.fa-star.checked {
+            color: orange;
+        }
+    }
+
+    .navigation {
+        & > .pagination {
+            display: flex;
+            flex-direction: row;
+            gap: 0.3rem;
+
+            .current, .page, .next, .previous, .first, .last {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+
+                & > a {
+                    text-align: center;
+                    vertical-align: middle;
+                    display: block;
+                    color: white;
+                    text-decoration: none;
+                    background-color: #0d6efd;
+                    width: 40px;
+                    height: 40px;
+                    line-height: 40px;
+                    border-radius: 4px;
+
+                    &:hover {
+                        background-color: #147dc2;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 752px) {
+    body {
+        .card {
+            flex-direction: column !important;
+            height: auto;
+
+            &__img {
+                max-width: 100%;
+                width: 100%;
+                height: 100%;
+                max-height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}

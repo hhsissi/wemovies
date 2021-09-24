@@ -1,0 +1,25 @@
+{% if mainVideos and mainVideos[0] %}
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item w-100" style="height: 300px;" src="https://www.youtube.com/embed/{{ mainVideos[0].key }}?rel=0" allowfullscreen></iframe>
+    </div>
+{% else %}
+    <img class="w-100" src="{{ imgConfig.secureBaseUrl }}/{{ imgConfig.posterSizes ? imgConfig.posterSizes[4] : '' }}{{ movie.posterPath }}" />
+{% endif %}
+<br/><br/>
+<div class="card-title d-flex flex-row align-items-baseline gap-2 flex-wrap">
+    <h5>{{ movie.title }}</h5>
+    <span style="flex: 1 1 auto"></span>
+    <div>
+        {% for i in 1..5 %}
+            {% if movie.voteAverage | round / 2 >= i %}
+                <span class="fa fa-star checked"></span>
+            {% else %}
+                <span class="fa fa-star"></span>
+            {% endif %}
+        {% endfor %}
+        <span>({{ movie.voteCount }} votes)</span>
+    </div>
+</div>
+<p>
+    {{ movie.overview }}
+</p>

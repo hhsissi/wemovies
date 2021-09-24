@@ -1,0 +1,18 @@
+<div>
+    {{ render(controller('App\\Controller\\MovieController::getMovie', {id: bestRatedMovie.id})) }}
+</div>
+
+<br/><br/>
+
+{% block body %}
+    <div>
+    {% for movie in resultsPage.results | slice(1) %}
+        {% include 'movie/card.html.twig' with {"movie": movie, "imgConfig": imgConfig} %}
+    {% endfor %}
+    </div>
+
+    <div class="navigation d-flex flex-row flex-wrap m-10 justify-content-center gap-2 m-5">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+{% endblock %}
+

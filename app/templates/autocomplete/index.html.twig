@@ -1,0 +1,9 @@
+<ul class="list-group">
+    {% for movie in page.results %}
+        <button type="button"
+                class="list-group-item list-group-item-action modalControl"
+                data-movie="{{ movie.id }}" data-bs-toggle="modal" data-bs-target="#movieModal">
+                {{ movie.title }}
+        </button>
+    {% endfor %}
+</ul>

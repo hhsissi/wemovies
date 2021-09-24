@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome to We Movies{% endblock %}
+
+{% block body %}
+
+    <div class="row d-flex flex-row flex-wrap">
+        <div class="col-md-3 mb-5">
+            <div class="mb-2">
+                {{ form_start(autocompleteForm) }}
+                {{ form_errors(autocompleteForm) }}
+                {{ form_row(autocompleteForm.name) }}
+                <div id="suggestions-list"></div>
+                {{ form_end(searchForm, {render_rest: false}) }}
+            </div>
+
+            <div class="card p-2">
+                {{ form_start(searchForm,  {'action': path('home'), 'method': 'GET'}) }}
+                    {{ form_errors(searchForm) }}
+                    {{ form_row(searchForm.genres) }}
+                    {{ form_row(searchForm.go) }}
+                {{ form_end(searchForm, {render_rest: false}) }}
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            {{ render(controller('App\\Controller\\MovieController::getMoviesList')) }}
+        </div>
+    </div>
+{% endblock %}
